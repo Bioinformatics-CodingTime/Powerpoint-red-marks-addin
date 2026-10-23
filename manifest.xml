@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="TaskPaneApp">
+  <Id>DB9D716E-A0E4-4F32-9B39-C17D0268E150</Id>
+  <Version>1.1.0.0</Version>
+  <ProviderName>Local</ProviderName>
+  <DefaultLocale>zh-CN</DefaultLocale>
+  <DisplayName DefaultValue="PowerPoint 快捷工具"/>
+  <Description DefaultValue="插入标注图形，并复制或粘贴 Markdown。"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/arrow-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/arrow-80.png"/>
+  <SupportUrl DefaultValue="https://localhost:3000/src/commands.html"/>
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/src/commands.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="PowerPointApi"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="RedMarks.Group">
+                <Label resid="RedMarks.Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Arrow.Icon16"/>
+                  <bt:Image size="32" resid="Arrow.Icon32"/>
+                  <bt:Image size="80" resid="Arrow.Icon80"/>
+                </Icon>
+                <Control xsi:type="Button" id="RedMarks.InsertArrow">
+                  <Label resid="Arrow.Label"/>
+                  <Supertip>
+                    <Title resid="Arrow.Label"/>
+                    <Description resid="Arrow.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Arrow.Icon16"/>
+                    <bt:Image size="32" resid="Arrow.Icon32"/>
+                    <bt:Image size="80" resid="Arrow.Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>insertRedArrow</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="RedMarks.InsertBox">
+                  <Label resid="Box.Label"/>
+                  <Supertip>
+                    <Title resid="Box.Label"/>
+                    <Description resid="Box.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Box.Icon16"/>
+                    <bt:Image size="32" resid="Box.Icon32"/>
+                    <bt:Image size="80" resid="Box.Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>insertRedBox</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="RedMarks.InsertWhiteBox">
+                  <Label resid="WhiteBox.Label"/>
+                  <Supertip>
+                    <Title resid="WhiteBox.Label"/>
+                    <Description resid="WhiteBox.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="WhiteBox.Icon16"/>
+                    <bt:Image size="32" resid="WhiteBox.Icon32"/>
+                    <bt:Image size="80" resid="WhiteBox.Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>insertWhiteBox</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="RedMarks.CopyMarkdown">
+                  <Label resid="CopyMarkdown.Label"/>
+                  <Supertip>
+                    <Title resid="CopyMarkdown.Label"/>
+                    <Description resid="CopyMarkdown.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Arrow.Icon16"/>
+                    <bt:Image size="32" resid="Arrow.Icon32"/>
+                    <bt:Image size="80" resid="Arrow.Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>copyMarkdown</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="RedMarks.PasteMarkdown">
+                  <Label resid="PasteMarkdown.Label"/>
+                  <Supertip>
+                    <Title resid="PasteMarkdown.Label"/>
+                    <Description resid="PasteMarkdown.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Box.Icon16"/>
+                    <bt:Image size="32" resid="Box.Icon32"/>
+                    <bt:Image size="80" resid="Box.Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>pasteMarkdown</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Arrow.Icon16" DefaultValue="https://localhost:3000/assets/arrow-16.png"/>
+        <bt:Image id="Arrow.Icon32" DefaultValue="https://localhost:3000/assets/arrow-32.png"/>
+        <bt:Image id="Arrow.Icon80" DefaultValue="https://localhost:3000/assets/arrow-80.png"/>
+        <bt:Image id="Box.Icon16" DefaultValue="https://localhost:3000/assets/box-16.png"/>
+        <bt:Image id="Box.Icon32" DefaultValue="https://localhost:3000/assets/box-32.png"/>
+        <bt:Image id="Box.Icon80" DefaultValue="https://localhost:3000/assets/box-80.png"/>
+        <bt:Image id="WhiteBox.Icon16" DefaultValue="https://localhost:3000/assets/box-16.png"/>
+        <bt:Image id="WhiteBox.Icon32" DefaultValue="https://localhost:3000/assets/box-32.png"/>
+        <bt:Image id="WhiteBox.Icon80" DefaultValue="https://localhost:3000/assets/box-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/src/commands.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="RedMarks.Group.Label" DefaultValue="快捷工具"/>
+        <bt:String id="Arrow.Label" DefaultValue="红色箭头"/>
+        <bt:String id="Box.Label" DefaultValue="红色方框"/>
+        <bt:String id="WhiteBox.Label" DefaultValue="纯白方框"/>
+        <bt:String id="CopyMarkdown.Label" DefaultValue="Copy Markdown"/>
+        <bt:String id="PasteMarkdown.Label" DefaultValue="Paste Markdown"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Arrow.Tooltip" DefaultValue="在当前幻灯片中插入一个红色右箭头。"/>
+        <bt:String id="Box.Tooltip" DefaultValue="在当前幻灯片中插入一个透明填充的红色方框。"/>
+        <bt:String id="WhiteBox.Tooltip" DefaultValue="在当前幻灯片中插入一个白色填充、无描边的方框。"/>
+        <bt:String id="CopyMarkdown.Tooltip" DefaultValue="将选中的文字或文本框复制为 Markdown。"/>
+        <bt:String id="PasteMarkdown.Tooltip" DefaultValue="将剪贴板中的 Markdown 插入当前幻灯片为格式化文本框。"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
